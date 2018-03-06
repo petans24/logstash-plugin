@@ -39,6 +39,11 @@ import jenkins.plugins.logstash.persistence.LogstashIndexerDao.SyslogProtocol;
 import org.kohsuke.stapler.DataBoundConstructor;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormatter;
+import org.joda.time.format.DateTimeFormat;
 
 /**
  * POJO for storing global configurations shared between components.
@@ -125,7 +130,18 @@ public class LogstashInstallation extends ToolInstallation {
 
     public String getKey()
     {
-      return key;
+      Pattern pattern = Pattern.compile("\\%\\{\\+(.*?)\\}");
+      Matcher matcher = pattern.matcher(key);
+      if (matcher.find())
+      {
+        DateTime dt = new DateTime();
+        DateTimeFormatter fmt = DateTimeFormat.forPattern(matcher.group(1));
+        return matcher.replaceAll(fmt.print(dt));
+      }
+      else
+      {
+        return key;
+      }
     }
 
   }

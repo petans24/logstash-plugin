@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
   <modelVersion>4.0.0</modelVersion>
-  
+
   <properties>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <skipIntegrationTests>true</skipIntegrationTests>
@@ -9,7 +9,7 @@
     <java.level>7</java.level>
     <jenkins.version>2.7.4</jenkins.version>
   </properties>
-  
+
   <parent>
     <groupId>org.jenkins-ci.plugins</groupId>
     <artifactId>plugin</artifactId>
@@ -92,7 +92,7 @@
       <version>2.13.0</version>
       <scope>test</scope>
     </dependency>
-    
+
     <dependency>
       <groupId>org.awaitility</groupId>
       <artifactId>awaitility</artifactId>
@@ -151,6 +151,12 @@
     	<version>1.15</version>
   		<optional>true</optional>
     </dependency>
+    <!-- https://mvnrepository.com/artifact/joda-time/joda-time -->
+    <dependency>
+        <groupId>joda-time</groupId>
+        <artifactId>joda-time</artifactId>
+        <version>2.9.9</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -163,8 +169,8 @@
         <configuration>
           <compatibleSinceVersion>2.0</compatibleSinceVersion>
         </configuration>
-      </plugin>   
-       
+      </plugin>
+
       <!-- https://issues.jenkins-ci.org/browse/INFRA-588 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -216,7 +222,7 @@
           </excludes>
         </configuration>
       </plugin>
- 
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-failsafe-plugin</artifactId>
@@ -233,9 +239,9 @@
           </execution>
         </executions>
       </plugin>
-    </plugins> 
+    </plugins>
   </build>
-  
+
   <developers>
     <developer>
       <id>jesusaurus</id>
